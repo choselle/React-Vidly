@@ -8,7 +8,7 @@ class Movies extends Component {
     };
 
     handleDelete = (movie) => {
-        const movies = this.state.movies.filter(m => m._id != movie._id);
+        const movies = this.state.movies.filter(m => m._id !== movie._id);
         this.setState({ movies: movies });
     };
 
@@ -20,6 +20,11 @@ class Movies extends Component {
         this.setState({ movies })
     };
 
+    handleReset = () => {
+        const movies = getMovies()
+        this.setState({ movies: movies });
+    };
+
     render() {
 
         const { length: count } = this.state.movies;
@@ -29,6 +34,7 @@ class Movies extends Component {
 
         return (
             <React.Fragment>
+                <button onClick={() => this.handleReset()} className="btn btn-warning btn-sm">Reset</button>
                 <p>Showing {count} movies in the database.</p>
                 <table className="table">
                     <thead>
@@ -58,7 +64,6 @@ class Movies extends Component {
                 </table>
             </React.Fragment>
         )
-
     };
 }
 
