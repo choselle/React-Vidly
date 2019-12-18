@@ -30,7 +30,12 @@ class Movies extends Component {
         const { length: count } = this.state.movies;
 
         if (count === 0)
-            return <p>There are no movies in the database.</p>;
+            return (
+                <React.Fragment>
+                    <button onClick={() => this.handleReset()} className="btn btn-warning btn-sm">Reset</button>
+                    <p>There are no movies in the database.</p>
+                </React.Fragment>
+            )
 
         return (
             <React.Fragment>
